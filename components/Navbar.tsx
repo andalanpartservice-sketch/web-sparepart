@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Search, ShoppingCart, Siren, Wrench, ShieldCheck, LayoutDashboard } from 'lucide-react';
+import { Search, ShoppingCart, Siren, ShieldCheck, LayoutDashboard } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { EmergencyModal } from './EmergencyModal';
 
@@ -54,17 +54,14 @@ export function Navbar({ initialSearch = '' }: NavbarProps) {
           <div className="sm:hidden space-y-2">
             {/* Top Row: Logo + Right Action Buttons */}
             <div className="flex items-center justify-between gap-2">
-              <Link href="/" className="flex items-center gap-2 shrink-0">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500 text-slate-950 font-black shadow-md">
-                  <Wrench className="h-4 w-4 stroke-[2.5]" />
-                </div>
-                <div>
-                  <span className="block font-black tracking-tight text-sm leading-none uppercase text-white">
-                    ANDALAN <span className="text-amber-500">PART SERVICE</span>
-                  </span>
-                  <span className="block text-[8px] font-bold tracking-wider text-slate-400 uppercase">
-                    Sparepart Forklift & Alat Berat
-                  </span>
+              <Link href="/" className="flex items-center shrink-0">
+                <div className="bg-white rounded-lg px-2 py-0.5 border border-amber-500/40 shadow-xs flex items-center h-10">
+                  {/* eslint-disable-next-html-element-suppression */}
+                  <img
+                    src="/logo.png"
+                    alt="Andalan Part Service Logo"
+                    className="h-8.5 w-auto object-contain"
+                  />
                 </div>
               </Link>
 
@@ -117,17 +114,14 @@ export function Navbar({ initialSearch = '' }: NavbarProps) {
           {/* Desktop Layout (1 Row) */}
           <div className="hidden sm:flex items-center justify-between gap-4">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500 text-slate-950 font-black shadow-md group-hover:bg-amber-400 transition">
-                <Wrench className="h-6 w-6 stroke-[2.5]" />
-              </div>
-              <div>
-                <span className="block font-black tracking-tight text-base sm:text-lg leading-none uppercase text-white">
-                  ANDALAN <span className="text-amber-500">PART SERVICE</span>
-                </span>
-                <span className="block text-[9px] sm:text-[10px] font-bold tracking-wider text-slate-400 uppercase">
-                  Heavy Equipment & Forklift Parts
-                </span>
+            <Link href="/" className="flex items-center shrink-0 group">
+              <div className="bg-white rounded-xl px-3 py-1 border border-amber-500/40 shadow-md flex items-center h-12 hover:border-amber-400 transition">
+                {/* eslint-disable-next-html-element-suppression */}
+                <img
+                  src="/logo.png"
+                  alt="Andalan Part Service Logo"
+                  className="h-10 w-auto object-contain"
+                />
               </div>
             </Link>
 

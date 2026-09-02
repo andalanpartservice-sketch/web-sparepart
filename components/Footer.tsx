@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Wrench, Phone, Mail, MapPin, ShieldCheck, Truck, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, Truck, Clock } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -10,12 +10,14 @@ export function Footer() {
           {/* Brand Col */}
           <div className="space-y-4 md:col-span-1">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500 text-slate-950 font-black">
-                <Wrench className="h-5 w-5 stroke-[2.5]" />
+              <div className="bg-white rounded-xl px-3 py-1.5 border border-amber-500/40 shadow-md flex items-center">
+                {/* eslint-disable-next-html-element-suppression */}
+                <img
+                  src="/logo.png"
+                  alt="Andalan Part Service Logo"
+                  className="h-12 w-auto object-contain"
+                />
               </div>
-              <span className="font-black tracking-tight text-base sm:text-lg uppercase text-white">
-                ANDALAN <span className="text-amber-500">PART SERVICE</span>
-              </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
               Distributor Utama Sparepart Alat Berat & Forklift Original & OEM High Quality. Solusi cepat penanganan unit breakdown lapangan.
