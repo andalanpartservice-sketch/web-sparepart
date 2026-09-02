@@ -93,13 +93,13 @@ export function Navbar({ initialSearch = '' }: NavbarProps) {
               <span className="hidden md:inline">Darurat Breakdown</span>
             </button>
 
-            {/* Cart Link */}
+            {/* Cart / List Order Link */}
             <Link
               href="/cart"
-              className="relative flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm font-semibold text-slate-200 hover:border-slate-500 hover:bg-slate-800 transition"
+              className="relative flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-xs font-bold text-slate-200 hover:border-amber-500 hover:bg-slate-800 transition"
             >
-              <ShoppingCart className="h-5 w-5 text-amber-400" />
-              <span className="hidden sm:inline">Keranjang</span>
+              <ShoppingCart className="h-4 w-4 text-amber-400" />
+              <span className="hidden sm:inline">List Order WA</span>
               {totalItems > 0 && (
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-500 text-[11px] font-black text-slate-950">
                   {totalItems}

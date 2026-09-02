@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { Footer } from "@/components/Footer";
+import { WhatsAppFloatingButton } from "@/components/WhatsAppFloatingButton";
 
 export const metadata: Metadata = {
-  title: "EquipPart | Catalog Spare Part Alat Berat & Forklift Emergency",
-  description: "Katalog sparepart alat berat (Caterpillar, Komatsu) & forklift (Toyota, TCM, Mitsubishi) dengan fitur pencarian part number kilat dan layanan darurat breakdown.",
+  title: "EquipPart | Etalase Catalog Sparepart Alat Berat & Forklift Original",
+  description: "Etalase katalog sparepart resmi alat berat (Caterpillar, Komatsu) & forklift (Toyota, TCM, Mitsubishi). Konsultasi stok & penawaran kilat via WhatsApp Sales.",
 };
 
 export default function RootLayout({
@@ -19,6 +20,7 @@ export default function RootLayout({
         <CartProvider>
           {children}
           <Footer />
+          <WhatsAppFloatingButton />
         </CartProvider>
       </body>
     </html>

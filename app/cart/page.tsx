@@ -1,18 +1,26 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/Navbar';
 import { useCart } from '@/context/CartContext';
 import { getWhatsAppUrl } from '@/lib/utils';
-import { ShoppingCart, Trash2, Plus, Minus, ArrowRight, ArrowLeft, ShieldCheck, Siren, MessageSquare } from 'lucide-react';
+import { ShoppingCart, Trash2, Plus, Minus, ArrowLeft, ShieldCheck, Siren, MessageSquare, Send, Building2, MapPin } from 'lucide-react';
 
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, clearCart, totalItems } = useCart();
+  const [customerName, setCustomerName] = useState('');
+  const [location, setLocation] = useState('');
 
   const adminWa = process.env.NEXT_PUBLIC_ADMIN_WHATSAPP || '6281234567890';
-  const itemSummaryList = cart.map(it => `- ${it.product.part_number} (${it.product.name}) x${it.quantity}`).join('\n');
-  const waMsg = `Halo Admin EquipPart, saya ingin meminta penawaran harga resmi untuk list keranjang sparepart berikut:\n\n${itemSummaryList}\n\nMohon informasi ketersediaan stok & diskon kargo pengiriman. Terima kasih!`;
+  
+  const itemLines = cart.map(
+    (it, index) => `${index + 1}. [${it.product.part_number}] ${it.product.name} - ${it.product.brand} (Qty: ${it.quantity} Pcs)`
+  ).join('\n');
+
+  const customerDetail = customerName ? `\n👤 Pemesan/PT: ${customerName}${location ? `\n📍 Lokasi Site/KOTA: ${location}` : ''}\n` : '';
+
+  const waMsg = `Halo Admin EquipPart, saya ingin meminta penawaran resmi & ketersediaan stok untuk list sparepart berikut:${customerDetail}\n📋 DAFTAR ORDER:\n${itemLines}\n\nTotal Item: ${totalItems} Pcs\n\nMohon info total harga penawaran + estimasi kargo pengiriman. Terima kasih!`;
   const waUrl = getWhatsAppUrl(adminWa, waMsg);
 
   return (
@@ -25,10 +33,10 @@ export default function CartPage() {
           <div>
             <h1 className="text-2xl font-black uppercase text-slate-900 tracking-tight flex items-center gap-2">
               <ShoppingCart className="h-6 w-6 text-amber-500" />
-              Keranjang Belanja Sparepart
+              Etalase List Order (Draft PO)
             </h1>
             <p className="text-xs text-slate-500 font-medium mt-0.5">
-              Tinjau daftar komponen yang akan Anda minta penawaran harganya.
+              Kumpulkan daftar part number yang Anda butuhkan lalu kirimkan langsung ke WhatsApp Sales untuk penawaran harga & stok.
             </p>
           </div>
           {cart.length > 0 && (
@@ -36,7 +44,7 @@ export default function CartPage() {
               onClick={clearCart}
               className="text-xs font-bold text-rose-600 hover:text-rose-800 transition flex items-center gap-1 self-start sm:self-auto"
             >
-              <Trash2 className="h-3.5 w-3.5" /> Kosongkan Keranjang
+              <Trash2 className="h-3.5 w-3.5" /> Kosongkan List
             </button>
           )}
         </div>
@@ -46,9 +54,9 @@ export default function CartPage() {
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 text-slate-400 mb-4">
               <ShoppingCart className="h-8 w-8" />
             </div>
-            <h2 className="text-lg font-bold text-slate-900">Keranjang Belanja Anda Kosong</h2>
+            <h2 className="text-lg font-bold text-slate-900">List Order Anda Masih Kosong</h2>
             <p className="text-xs text-slate-500 max-w-md mx-auto mt-1 mb-6">
-              Belum ada part number yang dimasukkan. Cari sparepart yang Anda butuhkan di katalog kami.
+              Belum ada part number yang dimasukkan. Cari sparepart yang Anda butuhkan di etalase katalog toko kami.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
@@ -56,7 +64,7 @@ export default function CartPage() {
                 className="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-6 py-3 text-xs font-extrabold uppercase text-white hover:bg-slate-800 transition"
               >
                 <ArrowLeft className="h-4 w-4" />
-                Jelajahi Katalog
+                Jelajahi Etalase Catalog
               </Link>
               <Link
                 href="/emergency"
@@ -96,8 +104,9 @@ export default function CartPage() {
                         </span>
                       </div>
                       <h3 className="font-bold text-slate-900 text-sm">{item.product.name}</h3>
-                      <div className="text-xs font-bold text-amber-800">
-                        Harga: <span className="text-amber-900 font-semibold">Tanya via WhatsApp Sales</span>
+                      <div className="text-xs font-bold text-emerald-700 flex items-center gap-1">
+                        <MessageSquare className="h-3.5 w-3.5" />
+                        <span>Harga & Diskon Kuantitas: <strong>Dikonfirmasi via WA Sales</strong></span>
                       </div>
                     </div>
                   </div>
@@ -125,7 +134,7 @@ export default function CartPage() {
                     <button
                       onClick={() => removeFromCart(item.product.id)}
                       className="p-2 text-slate-400 hover:text-rose-600 transition rounded-lg hover:bg-rose-50"
-                      title="Hapus barang"
+                      title="Hapus dari list"
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
@@ -136,45 +145,69 @@ export default function CartPage() {
 
             {/* Order Summary Sidebar */}
             <div className="lg:col-span-4">
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs sticky top-24 space-y-5">
-                <h3 className="font-extrabold text-base uppercase text-slate-900 border-b border-slate-100 pb-3">
-                  Ringkasan Request
+              <div className="rounded-2xl border border-amber-500/30 bg-white p-6 shadow-md sticky top-24 space-y-4">
+                <h3 className="font-extrabold text-base uppercase text-slate-900 border-b border-slate-100 pb-3 flex items-center justify-between">
+                  <span>Kirim Pesanan ke WA</span>
+                  <span className="text-xs text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full font-bold">Fast Response</span>
                 </h3>
 
-                <div className="space-y-2.5 text-xs text-slate-600">
-                  <div className="flex justify-between">
-                    <span>Total Item Part:</span>
-                    <span className="font-bold text-slate-900">{totalItems} unit</span>
+                {/* Optional Customer Info */}
+                <div className="space-y-3 pt-1 text-xs">
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Nama Pemesan / PT (Opsional)</label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        value={customerName}
+                        onChange={(e) => setCustomerName(e.target.value)}
+                        placeholder="mis: Bpk. Heru / PT. Trans Logistik"
+                        className="w-full rounded-lg border border-slate-300 py-2 pl-8 pr-3 text-xs focus:border-amber-500 focus:outline-none"
+                      />
+                      <Building2 className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-slate-400" />
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Penawaran Harga:</span>
-                    <span className="font-bold text-amber-700">Dikirim via WA Sales</span>
+
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Lokasi Site / Kota Pengiriman (Opsional)</label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                        placeholder="mis: Cikarang / Site Samarinda"
+                        className="w-full rounded-lg border border-slate-300 py-2 pl-8 pr-3 text-xs focus:border-amber-500 focus:outline-none"
+                      />
+                      <MapPin className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-slate-400" />
+                    </div>
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-slate-200 space-y-3">
+                <div className="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3">
+                  <div className="flex justify-between">
+                    <span>Total Jenis Sparepart:</span>
+                    <span className="font-bold text-slate-900">{cart.length} item</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Total Quantity:</span>
+                    <span className="font-bold text-slate-900">{totalItems} Pcs</span>
+                  </div>
+                </div>
+
+                <div className="pt-2">
                   <a
                     href={waUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 rounded-lg bg-emerald-600 py-3.5 text-xs font-extrabold uppercase text-white shadow-md hover:bg-emerald-500 active:scale-[0.99] transition"
+                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-600 py-4 text-xs font-black uppercase text-white shadow-lg hover:bg-emerald-500 active:scale-[0.99] transition"
                   >
-                    <MessageSquare className="h-4 w-4" />
-                    Minta Penawaran Harga via WA
+                    <Send className="h-4 w-4" />
+                    Kirim Draf PO ke WA Sales Toko
                   </a>
-
-                  <Link
-                    href="/checkout"
-                    className="w-full flex items-center justify-center gap-2 rounded-lg bg-amber-500 py-3 text-xs font-black uppercase text-slate-950 hover:bg-amber-400 transition"
-                  >
-                    Buat Pesanan Resmi (PO / Checkout)
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
                 </div>
 
-                <div className="flex items-start gap-2.5 rounded-lg bg-slate-50 p-3 text-[11px] text-slate-600">
-                  <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Tim Sales akan menghitung diskon kuantitas dan biaya ekspedisi kargo khusus untuk lokasi site Anda.</span>
+                <div className="flex items-start gap-2.5 rounded-lg bg-amber-50/80 border border-amber-200 p-3 text-[11px] text-amber-950">
+                  <ShieldCheck className="h-4 w-4 text-amber-600 shrink-0 mt-0.5" />
+                  <span>Tim Sales kami akan memverifikasi part number, memberikan harga terbaik, dan estimasi kargo dalam 5-15 menit.</span>
                 </div>
               </div>
             </div>
