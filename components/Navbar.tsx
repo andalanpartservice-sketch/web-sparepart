@@ -54,14 +54,22 @@ export function Navbar({ initialSearch = '' }: NavbarProps) {
           <div className="sm:hidden space-y-2">
             {/* Top Row: Logo + Right Action Buttons */}
             <div className="flex items-center justify-between gap-2">
-              <Link href="/" className="flex items-center shrink-0">
-                <div className="bg-white rounded-lg px-2 py-0.5 border border-amber-500/40 shadow-xs flex items-center h-10">
+              <Link href="/" className="flex items-center gap-2 shrink-0">
+                <div className="bg-white rounded-lg p-1 border-2 border-amber-500/60 shadow-md flex items-center justify-center h-10 w-10 shrink-0">
                   {/* eslint-disable-next-html-element-suppression */}
                   <img
                     src="/logo.png"
-                    alt="Andalan Part Service Logo"
-                    className="h-8.5 w-auto object-contain"
+                    alt="APS Logo"
+                    className="h-8 w-auto object-contain"
                   />
+                </div>
+                <div>
+                  <span className="block font-black tracking-tight text-xs sm:text-sm leading-none uppercase text-white">
+                    ANDALAN <span className="text-amber-500">PART SERVICE</span>
+                  </span>
+                  <span className="block text-[8px] font-extrabold tracking-wider text-amber-400 uppercase mt-0.5">
+                    Forklift & Heavy Equipment
+                  </span>
                 </div>
               </Link>
 
@@ -114,14 +122,22 @@ export function Navbar({ initialSearch = '' }: NavbarProps) {
           {/* Desktop Layout (1 Row) */}
           <div className="hidden sm:flex items-center justify-between gap-4">
             {/* Logo */}
-            <Link href="/" className="flex items-center shrink-0 group">
-              <div className="bg-white rounded-xl px-3 py-1 border border-amber-500/40 shadow-md flex items-center h-12 hover:border-amber-400 transition">
+            <Link href="/" className="flex items-center gap-3 shrink-0 group">
+              <div className="bg-white rounded-xl p-1.5 border-2 border-amber-500/60 shadow-lg flex items-center justify-center h-12 w-12 shrink-0 group-hover:border-amber-400 transition">
                 {/* eslint-disable-next-html-element-suppression */}
                 <img
                   src="/logo.png"
-                  alt="Andalan Part Service Logo"
+                  alt="APS Logo"
                   className="h-10 w-auto object-contain"
                 />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-black tracking-tight text-lg sm:text-xl leading-none text-white uppercase">
+                  ANDALAN <span className="text-amber-500">PART SERVICE</span>
+                </span>
+                <span className="text-[10px] font-black tracking-wider text-amber-400 uppercase mt-1">
+                  Heavy Equipment & Forklift Parts
+                </span>
               </div>
             </Link>
 

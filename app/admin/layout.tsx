@@ -12,17 +12,22 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3.5 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Link href="/admin" className="flex items-center gap-2.5">
-                <div className="bg-white rounded-lg px-2.5 py-0.5 border border-amber-500/40 shadow-xs flex items-center h-10">
+                <div className="bg-white rounded-lg p-1 border-2 border-amber-500/60 shadow-xs flex items-center justify-center h-10 w-10 shrink-0">
                   {/* eslint-disable-next-html-element-suppression */}
                   <img
                     src="/logo.png"
-                    alt="Andalan Part Service Logo"
-                    className="h-8.5 w-auto object-contain"
+                    alt="APS Logo"
+                    className="h-8 w-auto object-contain"
                   />
                 </div>
-                <span className="font-black uppercase tracking-tight text-xs text-amber-400 bg-slate-900 px-2 py-1 rounded border border-slate-800">
-                  ADMIN PORTAL
-                </span>
+                <div className="flex flex-col">
+                  <span className="font-black uppercase tracking-tight text-sm text-white">
+                    ANDALAN <span className="text-amber-500">PART SERVICE</span>
+                  </span>
+                  <span className="text-[9px] font-black uppercase text-amber-400">
+                    ADMIN PORTAL
+                  </span>
+                </div>
               </Link>
               <span className="hidden sm:inline text-xs text-slate-500 font-bold border-l border-slate-800 pl-3">
                 Control Panel & Warehouse Logistics

@@ -9,14 +9,22 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Col */}
           <div className="space-y-4 md:col-span-1">
-            <div className="flex items-center gap-2.5">
-              <div className="bg-white rounded-xl px-3 py-1.5 border border-amber-500/40 shadow-md flex items-center">
+            <div className="flex items-center gap-3">
+              <div className="bg-white rounded-xl p-1.5 border-2 border-amber-500/60 shadow-md flex items-center justify-center h-12 w-12 shrink-0">
                 {/* eslint-disable-next-html-element-suppression */}
                 <img
                   src="/logo.png"
-                  alt="Andalan Part Service Logo"
-                  className="h-12 w-auto object-contain"
+                  alt="APS Logo"
+                  className="h-10 w-auto object-contain"
                 />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-black tracking-tight text-lg leading-none text-white uppercase">
+                  ANDALAN <span className="text-amber-500">PART SERVICE</span>
+                </span>
+                <span className="text-[10px] font-bold tracking-wider text-amber-400 uppercase mt-1">
+                  Forklift & Heavy Equipment
+                </span>
               </div>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
