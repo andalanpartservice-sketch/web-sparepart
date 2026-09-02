@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Product, StockStatus } from '@/lib/types';
 import { formatIDR } from '@/lib/utils';
 import { saveProduct, updateProduct } from '@/lib/data-service';
-import { Package, Plus, CheckCircle, Clock, Edit2, Search, X, Upload, Trash2 } from 'lucide-react';
+import { Package, Plus, CheckCircle, Clock, Edit2, Search, X, Upload, Trash2, Flame } from 'lucide-react';
 
 interface ProductsClientProps {
   initialProducts: Product[];
@@ -24,6 +24,7 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
   const [compatibleModels, setCompatibleModels] = useState('');
   const [price, setPrice] = useState('');
   const [stockStatus, setStockStatus] = useState<StockStatus>('READY');
+  const [isFastMoving, setIsFastMoving] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const [description, setDescription] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,6 +34,14 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
     await updateProduct(productId, { stock_status: newStatus });
     setProducts((prev) =>
       prev.map((p) => (p.id === productId ? { ...p, stock_status: newStatus } : p))
+    );
+  };
+
+  const handleFastMovingToggle = async (productId: string, currentStatus?: boolean) => {
+    const newStatus = !currentStatus;
+    await updateProduct(productId, { is_fast_moving: newStatus });
+    setProducts((prev) =>
+      prev.map((p) => (p.id === productId ? { ...p, is_fast_moving: newStatus } : p))
     );
   };
 
@@ -55,6 +64,7 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
         compatible_models: modelsArr.length > 0 ? modelsArr : ['Universal Spec'],
         price: parseFloat(price) || 0,
         stock_status: stockStatus,
+        is_fast_moving: isFastMoving,
         image_url: imageUrl || 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80',
         description: description || 'Sparepart heavy duty garansi presisi.',
       });
@@ -88,6 +98,7 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
         compatible_models: modelsArr,
         price: parseFloat(price) || 0,
         stock_status: stockStatus,
+        is_fast_moving: isFastMoving,
         image_url: imageUrl,
         description,
       };
@@ -115,6 +126,7 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
     setCompatibleModels(p.compatible_models.join(', '));
     setPrice(p.price.toString());
     setStockStatus(p.stock_status);
+    setIsFastMoving(!!p.is_fast_moving);
     setImageUrl(p.image_url);
     setDescription(p.description);
   };
@@ -127,6 +139,7 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
     setCompatibleModels('');
     setPrice('');
     setStockStatus('READY');
+    setIsFastMoving(false);
     setImageUrl('');
     setDescription('');
   };
@@ -161,7 +174,7 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
             Manajemen Produk & Update Stok
           </h1>
           <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Tambah SKU baru, ubah harga netto, dan update status stok (READY / INDENT).
+            Tambah SKU baru, ubah harga netto, kelola status Fast-Moving (Yang Sering Dipakai), dan status stok (READY / INDENT).
           </p>
         </div>
 
@@ -201,6 +214,7 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
                 <th className="px-4 py-3.5">Kategori</th>
                 <th className="px-4 py-3.5">Model Kompatibel</th>
                 <th className="px-4 py-3.5">Harga Netto</th>
+                <th className="px-4 py-3.5">Tipe Part</th>
                 <th className="px-4 py-3.5">Status Stok</th>
                 <th className="px-4 py-3.5 text-right">Edit</th>
               </tr>
@@ -237,6 +251,23 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
                     </span>
                   </td>
 
+                  {/* Fast Moving Toggle Column */}
+                  <td className="px-4 py-3.5 whitespace-nowrap">
+                    <button
+                      onClick={() => handleFastMovingToggle(product.id, product.is_fast_moving)}
+                      title="Klik untuk mengubah status Fast Moving / Yang Sering Dipakai"
+                      className={`inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-[10px] uppercase shadow-2xs transition font-extrabold ${
+                        product.is_fast_moving
+                          ? 'bg-amber-500 text-slate-950 hover:bg-amber-400 font-black ring-1 ring-amber-600'
+                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-300'
+                      }`}
+                    >
+                      <Flame className={`h-3 w-3 ${product.is_fast_moving ? 'text-slate-950 fill-slate-950' : 'text-slate-400'}`} />
+                      {product.is_fast_moving ? 'FAST MOVING' : 'REGULAR'}
+                    </button>
+                  </td>
+
+                  {/* Stock Status Toggle Column */}
                   <td className="px-4 py-3.5 whitespace-nowrap">
                     <button
                       onClick={() => handleStockToggle(product.id, product.stock_status)}
@@ -377,16 +408,34 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
                 />
               </div>
 
-              <div>
-                <label className="block font-bold text-slate-700 mb-1">Status Stok Initial</label>
-                <select
-                  value={stockStatus}
-                  onChange={(e) => setStockStatus(e.target.value as StockStatus)}
-                  className="w-full rounded-lg border border-slate-300 p-2 focus:border-amber-500 focus:outline-none"
-                >
-                  <option value="READY">READY STOCK</option>
-                  <option value="INDENT">INDENT 7 DAYS</option>
-                </select>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Status Stok Initial</label>
+                  <select
+                    value={stockStatus}
+                    onChange={(e) => setStockStatus(e.target.value as StockStatus)}
+                    className="w-full rounded-lg border border-slate-300 p-2 focus:border-amber-500 focus:outline-none"
+                  >
+                    <option value="READY">READY STOCK</option>
+                    <option value="INDENT">INDENT 7 DAYS</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Tipe Part (Filter Publik)</label>
+                  <select
+                    value={isFastMoving ? 'FAST_MOVING' : 'REGULAR'}
+                    onChange={(e) => setIsFastMoving(e.target.value === 'FAST_MOVING')}
+                    className={`w-full rounded-lg border p-2 font-bold focus:outline-none ${
+                      isFastMoving
+                        ? 'border-amber-500 bg-amber-50 text-amber-900'
+                        : 'border-slate-300 bg-white text-slate-700'
+                    }`}
+                  >
+                    <option value="REGULAR">REGULAR PART</option>
+                    <option value="FAST_MOVING">🔥 FAST MOVING (Sering Dipakai)</option>
+                  </select>
+                </div>
               </div>
 
               <div>
