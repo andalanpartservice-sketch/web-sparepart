@@ -27,7 +27,7 @@ export default function CartPage() {
     <div className="flex min-h-screen flex-col">
       <Navbar />
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 flex-1 w-full">
+      <main className="mx-auto max-w-7xl px-3 sm:px-6 py-4 sm:py-8 flex-1 w-full pb-28 sm:pb-8">
         {/* Header */}
         <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
           <div>

@@ -34,7 +34,7 @@ export function ProductDetailClient({ initialProduct, id }: ProductDetailClientP
     <div className="flex min-h-screen flex-col">
       <Navbar />
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 flex-1 w-full">
+      <main className="mx-auto max-w-7xl px-3 sm:px-6 py-4 sm:py-8 flex-1 w-full pb-28 sm:pb-8">
         {/* Breadcrumb / Back Link */}
         <div className="mb-6">
           <Link

@@ -61,7 +61,7 @@ export default function EmergencyPage() {
     <div className="flex min-h-screen flex-col">
       <Navbar />
 
-      <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6 flex-1 w-full space-y-8">
+      <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6 flex-1 w-full pb-28 sm:pb-8 space-y-8">
         {/* Top Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
           <div>
