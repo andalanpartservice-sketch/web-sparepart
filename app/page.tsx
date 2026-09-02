@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/Navbar';
 import { ProductCard } from '@/components/ProductCard';
+import { AIRecommendationWidget } from '@/components/AIRecommendationWidget';
 import { getProducts } from '@/lib/data-service';
 import { Siren, ShieldCheck, Zap, SlidersHorizontal, ArrowRight } from 'lucide-react';
 
@@ -19,6 +20,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const category = resolvedParams.category || 'ALL';
 
   const products = await getProducts(search, brand, category);
+  const allProducts = await getProducts();
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -157,6 +159,13 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               })}
             </div>
           </div>
+
+          {/* AI Smart Recommendation Box */}
+          <AIRecommendationWidget
+            currentBrand={brand}
+            currentCategory={category}
+            allProducts={allProducts}
+          />
         </div>
 
         {/* Product Grid */}
