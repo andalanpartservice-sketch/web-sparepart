@@ -17,9 +17,12 @@ export const metadata: Metadata = {
   title: "Andalan Part Service | Etalase Catalog Sparepart Alat Berat & Forklift Original",
   description: "Etalase katalog sparepart resmi alat berat (Caterpillar, Komatsu) & forklift (Toyota, TCM, Mitsubishi). Konsultasi stok & penawaran kilat via WhatsApp Sales.",
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/icon.png',
   },
 };
 

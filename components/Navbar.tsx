@@ -52,14 +52,22 @@ export function Navbar({ initialSearch = '' }: NavbarProps) {
         <div className="mx-auto max-w-7xl px-3 sm:px-6 py-3.5 space-y-3">
           {/* Row 1: Original Brand Logo (/logo.png) + Right Action Buttons */}
           <div className="flex items-center justify-between gap-4">
-            {/* Logo Brand (UNTOUCHED ORIGINAL LOGO IMAGE) */}
-            <Link href="/" className="flex items-center shrink-0 group">
+            {/* Logo Brand + Large Title */}
+            <Link href="/" className="flex items-center gap-3 sm:gap-4 shrink-0 group">
               {/* eslint-disable-next-html-element-suppression */}
               <img
-                src="/logo.png"
-                alt="Andalan Part Service Logo"
+                src="/logo-mark-clean.png"
+                alt="APS Logo Mark"
                 className="h-14 sm:h-20 lg:h-24 w-auto object-contain transition group-hover:scale-105"
               />
+              <div className="flex flex-col">
+                <span className="font-black tracking-tight text-xl sm:text-3xl lg:text-4xl leading-none uppercase text-slate-950">
+                  ANDALAN <span className="text-amber-500">PART SERVICE</span>
+                </span>
+                <span className="text-[10px] sm:text-xs font-black tracking-wider text-slate-600 uppercase mt-1 sm:mt-1.5">
+                  Heavy Equipment & Forklift Parts Solution
+                </span>
+              </div>
             </Link>
 
             {/* Top Right Action Buttons */}

@@ -14,13 +14,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <Link href="/admin" className="flex items-center gap-2.5">
                 {/* eslint-disable-next-html-element-suppression */}
                 <img
-                  src="/logo.png"
-                  alt="Andalan Part Service Logo"
+                  src="/logo-mark-clean.png"
+                  alt="APS Logo Mark"
                   className="h-12 w-auto object-contain"
                 />
-                <span className="font-black uppercase text-[10px] text-slate-950 bg-amber-400 px-2 py-0.5 rounded shadow-xs">
-                  ADMIN PORTAL
-                </span>
+                <div className="flex flex-col">
+                  <span className="font-black uppercase tracking-tight text-sm text-slate-950">
+                    ANDALAN <span className="text-amber-500">PART SERVICE</span>
+                  </span>
+                  <span className="text-[9px] font-black uppercase text-slate-500">
+                    ADMIN PORTAL
+                  </span>
+                </div>
               </Link>
               <span className="hidden sm:inline text-xs text-slate-400 font-bold border-l border-slate-200 pl-3">
                 Control Panel & Warehouse Logistics
