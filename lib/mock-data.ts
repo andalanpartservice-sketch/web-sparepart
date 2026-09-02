@@ -12,6 +12,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     stock_status: 'READY',
     image_url: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&auto=format&fit=crop&q=80',
     description: 'Filter oli mesin efisiensi tinggi untuk ekskavator dan dozer Caterpillar. Melindungi sistem pelumasan dari partikel kontaminan hingga 10 mikron.',
+    is_fast_moving: true,
     created_at: new Date('2026-01-10').toISOString(),
   },
   {
@@ -25,6 +26,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     stock_status: 'READY',
     image_url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80',
     description: 'Elemen filter bahan bakar utama Komatsu Genuine Part. Memastikan suplai solar bersih ke sistem injeksi kompresi tinggi.',
+    is_fast_moving: true,
     created_at: new Date('2026-01-12').toISOString(),
   },
   {
@@ -38,6 +40,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     stock_status: 'READY',
     image_url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80',
     description: 'Kampas rem set roda depan forklift Toyota seri 8FD30 / 8FG30. Daya cengkeram tinggi tahan panas untuk pengoperasian kontinyu.',
+    is_fast_moving: true,
     created_at: new Date('2026-01-15').toISOString(),
   },
   {
@@ -51,6 +54,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     stock_status: 'READY',
     image_url: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=800&auto=format&fit=crop&q=80',
     description: 'Kit seal membran dan O-ring silinder hidrolik pompa utama Forklift TCM 3 Ton. Tahan tekanan tinggi hingga 250 Bar.',
+    is_fast_moving: true,
     created_at: new Date('2026-01-18').toISOString(),
   },
   {
@@ -116,6 +120,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     stock_status: 'READY',
     image_url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80',
     description: 'Master rem utama presisi tinggi untuk unit forklift Caterpillar kapasitas 2.0 - 3.0 Ton. Memastikan tekanan fluida pengereman hidrolik stabil dan responsif.',
+    is_fast_moving: true,
     created_at: new Date('2026-02-01').toISOString(),
   },
   {
@@ -129,6 +134,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     stock_status: 'READY',
     image_url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80',
     description: 'Set kampas rem roda depan tahan gesekan dan panas tinggi, dirancang khusus untuk forklift Caterpillar tipe DP25 & DP30 pengoperasian beban berat.',
+    is_fast_moving: true,
     created_at: new Date('2026-02-02').toISOString(),
   },
   {
@@ -155,6 +161,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     stock_status: 'READY',
     image_url: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=800&auto=format&fit=crop&q=80',
     description: 'Elemen filter oli hidrolik saluran balik (return line) forklift Caterpillar. Menyaring kontaminan hingga 10 mikron untuk menjaga pompa dan katup hidrolik.',
+    is_fast_moving: true,
     created_at: new Date('2026-02-04').toISOString(),
   },
   {
@@ -168,6 +175,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     stock_status: 'READY',
     image_url: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=800&auto=format&fit=crop&q=80',
     description: 'Kit seal silinder tilt (kemiringan mast) forklift Caterpillar. Terdiri dari wiper seal, rod packing, dan O-ring tahan tekanan hidrolik tinggi.',
+    is_fast_moving: true,
     created_at: new Date('2026-02-05').toISOString(),
   },
   {
@@ -194,6 +202,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     stock_status: 'READY',
     image_url: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=800&auto=format&fit=crop&q=80',
     description: 'Pompa air pendingin (water pump) mesin diesel Mitsubishi S4S / S6S pada forklift Caterpillar DP25 dan DP30. Menjaga sirkulasi pendingin blok mesin.',
+    is_fast_moving: true,
     created_at: new Date('2026-02-07').toISOString(),
   },
   {
@@ -246,6 +255,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     stock_status: 'READY',
     image_url: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&auto=format&fit=crop&q=80',
     description: 'Filter udara luar pelindung mesin forklift Caterpillar dari debu dan partikel lapangan pabrik / gudang.',
+    is_fast_moving: true,
     created_at: new Date('2026-02-11').toISOString(),
   },
   {

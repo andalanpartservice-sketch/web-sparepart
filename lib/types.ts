@@ -17,6 +17,7 @@ export interface Product {
   stock_status: StockStatus;
   image_url: string;
   description: string;
+  is_fast_moving?: boolean;
   created_at?: string;
 }
 

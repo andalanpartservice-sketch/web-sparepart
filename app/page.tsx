@@ -2,12 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/Navbar';
 import { ProductCard } from '@/components/ProductCard';
-import { AIRecommendationWidget } from '@/components/AIRecommendationWidget';
 import { getProducts } from '@/lib/data-service';
-import { Siren, ShieldCheck, Zap, SlidersHorizontal, ArrowRight } from 'lucide-react';
+import { Siren, ShieldCheck, Zap, SlidersHorizontal, ArrowRight, Flame } from 'lucide-react';
 
 interface HomePageProps {
-  searchParams: Promise<{ search?: string; brand?: string; category?: string }>;
+  searchParams: Promise<{ search?: string; brand?: string; category?: string; filter?: string }>;
 }
 
 const BRANDS = ['ALL', 'Caterpillar', 'Komatsu', 'Toyota', 'TCM', 'Mitsubishi'];
@@ -18,9 +17,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const search = resolvedParams.search || '';
   const brand = resolvedParams.brand || 'ALL';
   const category = resolvedParams.category || 'ALL';
+  const filter = resolvedParams.filter || 'ALL';
 
-  const products = await getProducts(search, brand, category);
-  const allProducts = await getProducts();
+  const fastMovingOnly = filter === 'FAST_MOVING';
+  const products = await getProducts(search, brand, category, fastMovingOnly);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -93,7 +93,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 Katalog Sparepart Utama
               </h2>
               <p className="text-xs text-slate-500 font-medium mt-0.5">
-                {search ? `Menampilkan hasil pencarian untuk "${search}"` : 'Menampilkan daftar komponen ready stock & indent'}
+                {brand !== 'ALL'
+                  ? `Daftar sparepart resmi untuk merk ${brand}`
+                  : search
+                  ? `Menampilkan hasil pencarian untuk "${search}"`
+                  : 'Menampilkan daftar komponen ready stock & indent'}
               </p>
             </div>
             <div className="text-xs font-bold text-slate-500">
@@ -113,6 +117,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 const newParams = new URLSearchParams();
                 if (search) newParams.set('search', search);
                 if (category !== 'ALL') newParams.set('category', category);
+                if (filter !== 'ALL') newParams.set('filter', filter);
                 if (b !== 'ALL') newParams.set('brand', b);
                 const href = newParams.toString() ? `/?${newParams.toString()}` : '/';
 
@@ -120,16 +125,68 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   <Link
                     key={b}
                     href={href}
-                    className={`rounded-lg px-3 py-1.5 text-xs font-bold transition ${
+                    className={`rounded-lg px-3.5 py-2 text-xs font-black uppercase tracking-wider transition ${
                       isActive
-                        ? 'bg-slate-900 text-amber-400 shadow-xs'
-                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                        ? 'bg-slate-900 text-amber-400 shadow-xs ring-2 ring-amber-500/50'
+                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                     }`}
                   >
                     {b === 'ALL' ? 'Semua Brand' : b}
                   </Link>
                 );
               })}
+            </div>
+
+            {/* Quick Filter: Yang Sering Dipakai (Fast Moving) vs Semua Part */}
+            <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100">
+              <span className="text-xs font-bold uppercase text-slate-500 shrink-0 mr-2 flex items-center gap-1">
+                <Flame className="h-3.5 w-3.5 text-amber-500" /> Tipe Part:
+              </span>
+
+              {/* All Parts */}
+              {(() => {
+                const isActive = filter === 'ALL';
+                const newParams = new URLSearchParams();
+                if (search) newParams.set('search', search);
+                if (brand !== 'ALL') newParams.set('brand', brand);
+                if (category !== 'ALL') newParams.set('category', category);
+                const href = newParams.toString() ? `/?${newParams.toString()}` : '/';
+                return (
+                  <Link
+                    href={href}
+                    className={`rounded-lg px-3 py-1 text-xs font-bold transition ${
+                      isActive
+                        ? 'bg-slate-800 text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    Semua Sparepart
+                  </Link>
+                );
+              })()}
+
+              {/* Fast Moving Only */}
+              {(() => {
+                const isActive = filter === 'FAST_MOVING';
+                const newParams = new URLSearchParams();
+                if (search) newParams.set('search', search);
+                if (brand !== 'ALL') newParams.set('brand', brand);
+                if (category !== 'ALL') newParams.set('category', category);
+                newParams.set('filter', 'FAST_MOVING');
+                const href = `/?${newParams.toString()}`;
+                return (
+                  <Link
+                    href={href}
+                    className={`rounded-lg px-3 py-1 text-xs font-extrabold transition flex items-center gap-1 ${
+                      isActive
+                        ? 'bg-amber-500 text-slate-950 shadow-xs ring-1 ring-amber-600'
+                        : 'bg-amber-50 text-amber-900 border border-amber-200 hover:bg-amber-100'
+                    }`}
+                  >
+                    🔥 Yang Sering Dipakai (Fast-Moving)
+                  </Link>
+                );
+              })()}
             </div>
 
             {/* Categories Filter */}
@@ -140,6 +197,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 const newParams = new URLSearchParams();
                 if (search) newParams.set('search', search);
                 if (brand !== 'ALL') newParams.set('brand', brand);
+                if (filter !== 'ALL') newParams.set('filter', filter);
                 if (c !== 'ALL') newParams.set('category', c);
                 const href = newParams.toString() ? `/?${newParams.toString()}` : '/';
 
@@ -159,13 +217,6 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               })}
             </div>
           </div>
-
-          {/* AI Smart Recommendation Box */}
-          <AIRecommendationWidget
-            currentBrand={brand}
-            currentCategory={category}
-            allProducts={allProducts}
-          />
         </div>
 
         {/* Product Grid */}

@@ -16,7 +16,12 @@ async function getSupabaseInstance() {
   }
 }
 
-export async function getProducts(searchQuery?: string, brandFilter?: string, categoryFilter?: string): Promise<Product[]> {
+export async function getProducts(
+  searchQuery?: string,
+  brandFilter?: string,
+  categoryFilter?: string,
+  fastMovingOnly?: boolean
+): Promise<Product[]> {
   try {
     const supabase = await getSupabaseInstance();
     if (supabase) {
@@ -32,6 +37,9 @@ export async function getProducts(searchQuery?: string, brandFilter?: string, ca
       const { data, error } = await query;
       if (!error && data && data.length > 0) {
         let results = data as Product[];
+        if (fastMovingOnly) {
+          results = results.filter((p) => p.is_fast_moving);
+        }
         if (searchQuery && searchQuery.trim() !== '') {
           const q = searchQuery.toLowerCase().trim();
           results = results.filter(
@@ -56,6 +64,9 @@ export async function getProducts(searchQuery?: string, brandFilter?: string, ca
   }
   if (categoryFilter && categoryFilter !== 'ALL') {
     list = list.filter((p) => p.category.toLowerCase() === categoryFilter.toLowerCase());
+  }
+  if (fastMovingOnly) {
+    list = list.filter((p) => p.is_fast_moving);
   }
   if (searchQuery && searchQuery.trim() !== '') {
     const q = searchQuery.toLowerCase().trim();

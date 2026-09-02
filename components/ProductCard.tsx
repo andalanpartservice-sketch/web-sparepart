@@ -36,8 +36,8 @@ export function ProductCard({ product }: ProductCardProps) {
           className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
         />
 
-        {/* Stock Badge */}
-        <div className="absolute top-3 left-3">
+        {/* Stock & Fast Moving Badges */}
+        <div className="absolute top-3 left-3 flex flex-col gap-1 items-start">
           {isReady ? (
             <span className="inline-flex items-center gap-1 rounded-md bg-emerald-600 px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-xs">
               <CheckCircle className="h-3 w-3" /> READY STOCK
@@ -45,6 +45,12 @@ export function ProductCard({ product }: ProductCardProps) {
           ) : (
             <span className="inline-flex items-center gap-1 rounded-md bg-slate-700 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-slate-200 shadow-xs">
               <Clock className="h-3 w-3 text-amber-400" /> INDENT 7 DAYS
+            </span>
+          )}
+
+          {product.is_fast_moving && (
+            <span className="inline-flex items-center gap-1 rounded-md bg-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-slate-950 shadow-xs">
+              🔥 FAST MOVING
             </span>
           )}
         </div>
