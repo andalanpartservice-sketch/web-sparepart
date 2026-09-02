@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/Navbar';
-import { ProductCard } from '@/components/ProductCard';
+import { PublicCatalogClient } from '@/components/PublicCatalogClient';
 import { getProducts } from '@/lib/data-service';
 import { Siren, ShieldCheck, Zap, SlidersHorizontal, ArrowRight, Flame } from 'lucide-react';
 
@@ -20,7 +20,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const filter = resolvedParams.filter || 'ALL';
 
   const fastMovingOnly = filter === 'FAST_MOVING';
-  const products = await getProducts(search, brand, category, fastMovingOnly);
+  const initialProducts = await getProducts(search, brand, category, fastMovingOnly);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -101,7 +101,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               </p>
             </div>
             <div className="text-xs font-bold text-slate-500">
-              Total {products.length} Part Tersedia
+              Total {initialProducts.length} Part Tersedia
             </div>
           </div>
 
@@ -219,31 +219,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           </div>
         </div>
 
-        {/* Product Grid */}
-        {products.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-slate-300 bg-white p-12 text-center my-8">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-amber-100 text-amber-600 mb-3">
-              <Siren className="h-7 w-7" />
-            </div>
-            <h3 className="text-lg font-bold text-slate-900">Part Number Tidak Ditemukan</h3>
-            <p className="text-xs text-slate-500 max-w-md mx-auto mt-1 mb-5">
-              Part number yang Anda cari belum terdaftar di katalog publik kami. Jangan khawatir, kami memiliki stok gudang offline lebih dari 50.000 part number.
-            </p>
-            <Link
-              href="/emergency"
-              className="inline-flex items-center gap-2 rounded-lg bg-amber-500 px-5 py-2.5 text-xs font-extrabold uppercase text-slate-950 hover:bg-amber-400 transition"
-            >
-              <Siren className="h-4 w-4" />
-              Tanyakan via Emergency Finder
-            </Link>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        )}
+        {/* Product Grid Client Component with localStorage Sync */}
+        <PublicCatalogClient
+          initialProducts={initialProducts}
+          search={search}
+          brand={brand}
+          category={category}
+          fastMovingOnly={fastMovingOnly}
+        />
       </main>
     </div>
   );

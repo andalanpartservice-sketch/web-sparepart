@@ -82,6 +82,18 @@ CREATE POLICY "Public Insert Payment Proofs Bucket" ON storage.objects FOR INSER
 
 CREATE POLICY "Public Read Products Bucket" ON storage.objects FOR SELECT USING (bucket_id = 'products');
 
+-- PRODUCTS TABLE RLS POLICIES
+ALTER TABLE public.products ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Public Read Products" ON public.products;
+DROP POLICY IF EXISTS "Public Insert Products" ON public.products;
+DROP POLICY IF EXISTS "Public Update Products" ON public.products;
+DROP POLICY IF EXISTS "Public Delete Products" ON public.products;
+
+CREATE POLICY "Public Read Products" ON public.products FOR SELECT USING (true);
+CREATE POLICY "Public Insert Products" ON public.products FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public Update Products" ON public.products FOR UPDATE USING (true);
+CREATE POLICY "Public Delete Products" ON public.products FOR DELETE USING (true);
+
 -- SEED INITIAL PRODUCTS DATA FOR ALL 5 FORKLIFT SYSTEMS
 INSERT INTO public.products (part_number, name, brand, category, compatible_models, price, stock_status, image_url, description, is_fast_moving) VALUES
 ('C-1505', 'Engine Oil Filter Sakura C-1505 / Isuzu OEM', 'Toyota', 'Filter', ARRAY['Toyota 8FD25', 'Toyota 8FD30', 'Isuzu C240', 'Isuzu 4JG2'], 185000.00, 'READY', 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&auto=format&fit=crop&q=80', 'Filter oli mesin Sakura C-1505 OEM Isuzu C240 / 4JG2 untuk forklift Toyota & TCM. Efisiensi tinggi menyaring kontaminan oli.', true),

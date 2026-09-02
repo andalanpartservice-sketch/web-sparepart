@@ -16,6 +16,16 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
+  React.useEffect(() => {
+    import('@/lib/data-service').then(({ getProducts }) => {
+      getProducts().then((latest) => {
+        if (latest && latest.length > 0) {
+          setProducts(latest);
+        }
+      });
+    });
+  }, []);
+
   // New Product Form State
   const [partNumber, setPartNumber] = useState('');
   const [name, setName] = useState('');

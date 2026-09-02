@@ -8,6 +8,32 @@ const mockProductsStore: Product[] = [...INITIAL_PRODUCTS];
 const mockOrdersStore: Order[] = [...INITIAL_ORDERS];
 const mockInquiriesStore: EmergencyInquiry[] = [...INITIAL_INQUIRIES];
 
+const PRODUCTS_STORAGE_KEY = 'equip_products_store';
+
+function getLocalProducts(): Product[] | null {
+  if (typeof window !== 'undefined') {
+    try {
+      const data = localStorage.getItem(PRODUCTS_STORAGE_KEY);
+      if (data) {
+        return JSON.parse(data) as Product[];
+      }
+    } catch (e) {
+      console.warn('Failed to read products from localStorage', e);
+    }
+  }
+  return null;
+}
+
+function saveLocalProducts(products: Product[]): void {
+  if (typeof window !== 'undefined') {
+    try {
+      localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(products));
+    } catch (e) {
+      console.warn('Failed to save products to localStorage', e);
+    }
+  }
+}
+
 async function getSupabaseInstance() {
   if (typeof window !== 'undefined') {
     return createBrowserClient();
@@ -50,15 +76,16 @@ export async function getProducts(
               p.compatible_models.some((m) => m.toLowerCase().includes(q))
           );
         }
+        saveLocalProducts(data as Product[]);
         return results;
       }
     }
   } catch (e) {
-    console.warn('Using mock products data:', e);
+    console.warn('Using local / mock products data:', e);
   }
 
-  // Fallback / local filter
-  let list = [...mockProductsStore];
+  // Fallback / local storage filter
+  let list = getLocalProducts() || [...mockProductsStore];
   if (brandFilter && brandFilter !== 'ALL') {
     list = list.filter((p) => p.brand.toLowerCase() === brandFilter.toLowerCase());
   }
@@ -96,8 +123,9 @@ export async function getProductByIdOrPartNumber(idOrPartNumber: string): Promis
     // fallback
   }
 
+  const list = getLocalProducts() || mockProductsStore;
   const cleanQuery = idOrPartNumber.toLowerCase().replace(/[^a-z0-9]/g, '');
-  const product = mockProductsStore.find(
+  const product = list.find(
     (p) =>
       p.id === idOrPartNumber ||
       p.part_number.toLowerCase() === idOrPartNumber.toLowerCase() ||
@@ -294,6 +322,9 @@ export async function saveProduct(product: Omit<Product, 'id' | 'created_at'>): 
     if (supabase) {
       const { data, error } = await supabase.from('products').insert(product).select().single();
       if (!error && data) {
+        const currentList = getLocalProducts() || mockProductsStore;
+        const updatedList = [data as Product, ...currentList.filter((p) => p.id !== (data as Product).id)];
+        saveLocalProducts(updatedList);
         return data as Product;
       }
     }
@@ -301,7 +332,10 @@ export async function saveProduct(product: Omit<Product, 'id' | 'created_at'>): 
     // fallback
   }
 
+  const currentList = getLocalProducts() || mockProductsStore;
+  const updatedList = [newProduct, ...currentList.filter((p) => p.id !== newProduct.id)];
   mockProductsStore.unshift(newProduct);
+  saveLocalProducts(updatedList);
   return newProduct;
 }
 
@@ -310,16 +344,23 @@ export async function updateProduct(id: string, updates: Partial<Product>): Prom
     const supabase = await getSupabaseInstance();
     if (supabase) {
       const { error } = await supabase.from('products').update(updates).eq('id', id);
-      if (!error) return true;
+      if (!error) {
+        const currentList = getLocalProducts() || mockProductsStore;
+        const updatedList = currentList.map((p) => (p.id === id ? { ...p, ...updates } : p));
+        saveLocalProducts(updatedList);
+      }
     }
   } catch {
     // fallback
   }
 
+  const currentList = getLocalProducts() || mockProductsStore;
+  const updatedList = currentList.map((p) => (p.id === id ? { ...p, ...updates } : p));
+  saveLocalProducts(updatedList);
+
   const idx = mockProductsStore.findIndex((p) => p.id === id);
   if (idx !== -1) {
     mockProductsStore[idx] = { ...mockProductsStore[idx], ...updates };
-    return true;
   }
-  return false;
+  return true;
 }
