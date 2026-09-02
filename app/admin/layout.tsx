@@ -8,44 +8,39 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <AdminAuthGuard>
       <div className="flex min-h-screen flex-col bg-slate-100">
         {/* Admin Top Header */}
-        <header className="sticky top-0 z-40 bg-slate-950 border-b border-slate-800 text-white shadow-md">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3.5 flex items-center justify-between">
+        <header className="sticky top-0 z-40 bg-white border-b border-slate-200 text-slate-900 shadow-sm">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2.5 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Link href="/admin" className="flex items-center gap-2.5">
                 {/* eslint-disable-next-html-element-suppression */}
                 <img
-                  src="/logo-mark-dark.png"
-                  alt="APS Logo"
-                  className="h-10 w-auto object-contain"
+                  src="/logo.png"
+                  alt="Andalan Part Service Logo"
+                  className="h-12 w-auto object-contain"
                 />
-                <div className="flex flex-col">
-                  <span className="font-black uppercase tracking-tight text-sm text-white">
-                    ANDALAN <span className="text-amber-500">PART SERVICE</span>
-                  </span>
-                  <span className="text-[9px] font-black uppercase text-amber-400">
-                    ADMIN PORTAL
-                  </span>
-                </div>
+                <span className="font-black uppercase text-[10px] text-slate-950 bg-amber-400 px-2 py-0.5 rounded shadow-xs">
+                  ADMIN PORTAL
+                </span>
               </Link>
-              <span className="hidden sm:inline text-xs text-slate-500 font-bold border-l border-slate-800 pl-3">
+              <span className="hidden sm:inline text-xs text-slate-400 font-bold border-l border-slate-200 pl-3">
                 Control Panel & Warehouse Logistics
               </span>
             </div>
 
             <nav className="flex items-center gap-2 sm:gap-4 text-xs font-bold">
-              <Link href="/admin" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-900 transition">
+              <Link href="/admin" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-700 hover:text-slate-950 hover:bg-slate-100 transition">
                 Overview
               </Link>
-              <Link href="/admin/orders" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-900 transition">
-                <ShoppingBag className="h-3.5 w-3.5 text-amber-500" /> Orders
+              <Link href="/admin/orders" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-700 hover:text-slate-950 hover:bg-slate-100 transition">
+                <ShoppingBag className="h-3.5 w-3.5 text-amber-600" /> Orders
               </Link>
-              <Link href="/admin/inquiries" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-900 transition">
-                <Siren className="h-3.5 w-3.5 text-amber-500 animate-pulse" /> Inquiries
+              <Link href="/admin/inquiries" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-700 hover:text-slate-950 hover:bg-slate-100 transition">
+                <Siren className="h-3.5 w-3.5 text-amber-600 animate-pulse" /> Inquiries
               </Link>
-              <Link href="/admin/products" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-900 transition">
-                <Package className="h-3.5 w-3.5 text-amber-500" /> Products
+              <Link href="/admin/products" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-700 hover:text-slate-950 hover:bg-slate-100 transition">
+                <Package className="h-3.5 w-3.5 text-amber-600" /> Products
               </Link>
-              <Link href="/" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 hover:bg-amber-400 transition ml-2">
+              <Link href="/" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 text-amber-400 hover:bg-slate-800 transition ml-2 font-black">
                 <Home className="h-3.5 w-3.5" /> Frontend site
               </Link>
             </nav>

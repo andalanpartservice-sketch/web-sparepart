@@ -9,21 +9,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Col */}
           <div className="space-y-4 md:col-span-1">
-            <div className="flex items-center gap-3">
+            <div className="bg-white p-2 rounded-xl border border-slate-700 shadow-md inline-block">
               {/* eslint-disable-next-html-element-suppression */}
               <img
-                src="/logo-mark-dark.png"
-                alt="APS Logo"
-                className="h-14 w-auto object-contain"
+                src="/logo.png"
+                alt="Andalan Part Service Logo"
+                className="h-14 sm:h-16 w-auto object-contain"
               />
-              <div className="flex flex-col">
-                <span className="font-black tracking-tight text-xl leading-none text-white uppercase">
-                  ANDALAN <span className="text-amber-500">PART SERVICE</span>
-                </span>
-                <span className="text-xs font-bold tracking-wider text-amber-400 uppercase mt-1">
-                  Forklift & Heavy Equipment
-                </span>
-              </div>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
               Distributor Utama Sparepart Alat Berat & Forklift Original & OEM High Quality. Solusi cepat penanganan unit breakdown lapangan.
