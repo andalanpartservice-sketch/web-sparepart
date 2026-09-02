@@ -19,7 +19,7 @@ export default async function OrderSuccessPage({ params }: OrderSuccessPageProps
   }
 
   const adminWa = process.env.NEXT_PUBLIC_ADMIN_WHATSAPP || '6281234567890';
-  const waMsg = `Halo Admin EquipPart, saya ${order.customer_name} ingin konfirmasi pesanan dengan kode invoice: ${order.order_code}.\n\nTotal Pembayaran: ${formatIDR(order.total_amount)}\nMetode Pembayaran: ${order.payment_method}.\n\nMohon informasi jadwal pengiriman. Terima kasih!`;
+  const waMsg = `Halo Admin Andalan Part Service, saya ${order.customer_name} ingin konfirmasi pesanan dengan kode invoice: ${order.order_code}.\n\nTotal Pembayaran: ${formatIDR(order.total_amount)}\nMetode Pembayaran: ${order.payment_method}.\n\nMohon informasi jadwal pengiriman. Terima kasih!`;
   const waUrl = getWhatsAppUrl(adminWa, waMsg);
 
   return (
@@ -92,14 +92,14 @@ export default async function OrderSuccessPage({ params }: OrderSuccessPageProps
                   <div className="flex items-center justify-between">
                     <span className="font-mono-part font-black text-slate-900 text-base">883-092-1144</span>
                   </div>
-                  <span className="text-[10px] text-slate-500 block">a.n. PT EquipPart Heavy Indonesia</span>
+                  <span className="text-[10px] text-slate-500 block">a.n. PT Andalan Part Service Indonesia</span>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-amber-200 space-y-1">
                   <span className="text-xs font-bold text-slate-900 block">Bank Mandiri</span>
                   <div className="flex items-center justify-between">
                     <span className="font-mono-part font-black text-slate-900 text-base">156-00-99887-123</span>
                   </div>
-                  <span className="text-[10px] text-slate-500 block">a.n. PT EquipPart Heavy Indonesia</span>
+                  <span className="text-[10px] text-slate-500 block">a.n. PT Andalan Part Service Indonesia</span>
                 </div>
               </div>
             </div>

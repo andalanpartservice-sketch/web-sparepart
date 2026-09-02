@@ -16,7 +16,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const isReady = product.stock_status === 'READY';
 
   const adminWa = process.env.NEXT_PUBLIC_ADMIN_WHATSAPP || '6281234567890';
-  const waMsg = `Halo Admin EquipPart, saya ingin menanyakan penawaran harga terbaik untuk part number: ${product.part_number} (${product.name}). Apakah stok tersedia?`;
+  const waMsg = `Halo Admin Andalan Part Service, saya ingin menanyakan penawaran harga terbaik untuk part number: ${product.part_number} (${product.name}). Apakah stok tersedia?`;
   const waUrl = getWhatsAppUrl(adminWa, waMsg);
 
   const handleAddToCart = (e: React.MouseEvent) => {

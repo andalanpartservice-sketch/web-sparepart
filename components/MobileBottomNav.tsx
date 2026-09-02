@@ -14,7 +14,7 @@ export function MobileBottomNav() {
   const [isEmergencyModalOpen, setIsEmergencyModalOpen] = useState(false);
 
   const adminWa = process.env.NEXT_PUBLIC_ADMIN_WHATSAPP || '6281234567890';
-  const defaultMsg = 'Halo Admin EquipPart, saya ingin berkonsultasi mengenai kebutuhan sparepart forklift / alat berat.';
+  const defaultMsg = 'Halo Admin Andalan Part Service, saya ingin berkonsultasi mengenai kebutuhan sparepart forklift / alat berat.';
   const waUrl = getWhatsAppUrl(adminWa, defaultMsg);
 
   const isHome = pathname === '/';

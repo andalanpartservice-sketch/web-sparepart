@@ -18,7 +18,7 @@ export default function CheckoutPage() {
     (it, index) => `${index + 1}. [${it.product.part_number}] ${it.product.name} - ${it.product.brand} (Qty: ${it.quantity} Pcs)`
   ).join('\n');
 
-  const waMsg = `Halo Admin EquipPart, saya ingin mengonfirmasi pesanan sparepart berikut:\n\n📋 DRAFT ORDER / PO:\n${itemLines}\n\nTotal Item: ${totalItems} Pcs\n\nMohon informasi total harga penawaran, stok & pengiriman kargo. Terima kasih!`;
+  const waMsg = `Halo Admin Andalan Part Service, saya ingin mengonfirmasi pesanan sparepart berikut:\n\n📋 DRAFT ORDER / PO:\n${itemLines}\n\nTotal Item: ${totalItems} Pcs\n\nMohon informasi total harga penawaran, stok & pengiriman kargo. Terima kasih!`;
   const waUrl = getWhatsAppUrl(adminWa, waMsg);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function CheckoutPage() {
               Penyelesaian Pesanan via WhatsApp Sales
             </h1>
             <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto">
-              Seluruh transaksi penawaran harga, verifikasi part number, dan pengiriman kargo dilakukan langsung secara aman melalui <strong>WhatsApp Sales Resmi EquipPart</strong>.
+              Seluruh transaksi penawaran harga, verifikasi part number, dan pengiriman kargo dilakukan langsung secara aman melalui <strong>WhatsApp Sales Resmi Andalan Part Service</strong>.
             </p>
           </div>
 

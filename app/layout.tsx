@@ -14,7 +14,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "EquipPart | Etalase Catalog Sparepart Alat Berat & Forklift Original",
+  title: "Andalan Part Service | Etalase Catalog Sparepart Alat Berat & Forklift Original",
   description: "Etalase katalog sparepart resmi alat berat (Caterpillar, Komatsu) & forklift (Toyota, TCM, Mitsubishi). Konsultasi stok & penawaran kilat via WhatsApp Sales.",
 };
 

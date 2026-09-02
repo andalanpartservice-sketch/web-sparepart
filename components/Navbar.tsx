@@ -59,10 +59,10 @@ export function Navbar({ initialSearch = '' }: NavbarProps) {
                   <Wrench className="h-4 w-4 stroke-[2.5]" />
                 </div>
                 <div>
-                  <span className="block font-black tracking-tight text-base leading-none uppercase text-white">
-                    EQUIP<span className="text-amber-500">PART</span>
+                  <span className="block font-black tracking-tight text-sm leading-none uppercase text-white">
+                    ANDALAN <span className="text-amber-500">PART SERVICE</span>
                   </span>
-                  <span className="block text-[9px] font-bold tracking-wider text-slate-400 uppercase">
+                  <span className="block text-[8px] font-bold tracking-wider text-slate-400 uppercase">
                     Sparepart Forklift & Alat Berat
                   </span>
                 </div>
@@ -122,11 +122,11 @@ export function Navbar({ initialSearch = '' }: NavbarProps) {
                 <Wrench className="h-6 w-6 stroke-[2.5]" />
               </div>
               <div>
-                <span className="block font-black tracking-tight text-lg leading-none uppercase text-white">
-                  EQUIP<span className="text-amber-500">PART</span>
+                <span className="block font-black tracking-tight text-base sm:text-lg leading-none uppercase text-white">
+                  ANDALAN <span className="text-amber-500">PART SERVICE</span>
                 </span>
-                <span className="block text-[10px] font-bold tracking-wider text-slate-400 uppercase">
-                  Heavy Equipment & Forklift
+                <span className="block text-[9px] sm:text-[10px] font-bold tracking-wider text-slate-400 uppercase">
+                  Heavy Equipment & Forklift Parts
                 </span>
               </div>
             </Link>

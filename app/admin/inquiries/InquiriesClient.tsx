@@ -56,7 +56,7 @@ export function InquiriesClient({ initialInquiries }: InquiriesClientProps) {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {inquiries.map((inq) => {
-            const waMsg = `Halo Kak ${inq.customer_name}, kami dari Tim Technical Support EquipPart merespon laporan darurat unit ${inq.machine_model}.\n\nKendala: ${inq.description}.\n\nApakah part number / foto komponen sudah sesuai?`;
+            const waMsg = `Halo Kak ${inq.customer_name}, kami dari Tim Technical Support Andalan Part Service merespon laporan darurat unit ${inq.machine_model}.\n\nKendala: ${inq.description}.\n\nApakah part number / foto komponen sudah sesuai?`;
             const waUrl = getWhatsAppUrl(inq.whatsapp_number || adminWa, waMsg);
 
             return (

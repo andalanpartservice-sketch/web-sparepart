@@ -15,8 +15,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500 text-slate-950 font-black">
                   <Wrench className="h-5 w-5 stroke-[2.5]" />
                 </div>
-                <span className="font-black uppercase tracking-tight text-base text-white">
-                  EQUIP<span className="text-amber-500">ADMIN</span>
+                <span className="font-black uppercase tracking-tight text-sm sm:text-base text-white">
+                  ANDALAN <span className="text-amber-500">ADMIN</span>
                 </span>
               </Link>
               <span className="hidden sm:inline text-xs text-slate-500 font-bold border-l border-slate-800 pl-3">

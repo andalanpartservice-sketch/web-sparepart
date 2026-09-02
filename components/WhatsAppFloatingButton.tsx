@@ -6,7 +6,7 @@ import { getWhatsAppUrl } from '@/lib/utils';
 
 export function WhatsAppFloatingButton() {
   const adminWa = process.env.NEXT_PUBLIC_ADMIN_WHATSAPP || '6281234567890';
-  const defaultMsg = 'Halo Admin EquipPart, saya ingin berkonsultasi mengenai kebutuhan sparepart forklift / alat berat dan menanyakan ketersediaan stok.';
+  const defaultMsg = 'Halo Admin Andalan Part Service, saya ingin berkonsultasi mengenai kebutuhan sparepart forklift / alat berat dan menanyakan ketersediaan stok.';
   const waUrl = getWhatsAppUrl(adminWa, defaultMsg);
 
   return (

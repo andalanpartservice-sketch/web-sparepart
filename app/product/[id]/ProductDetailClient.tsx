@@ -27,7 +27,7 @@ export function ProductDetailClient({ initialProduct, id }: ProductDetailClientP
 
   const isReady = product.stock_status === 'READY';
   const adminWa = process.env.NEXT_PUBLIC_ADMIN_WHATSAPP || '6281234567890';
-  const waMsg = `Halo Admin EquipPart, saya ingin menanyakan penawaran harga terbaik untuk part number: ${product.part_number} (${product.name}). Mohon info stok & diskon quantity. Terima kasih!`;
+  const waMsg = `Halo Admin Andalan Part Service, saya ingin menanyakan penawaran harga terbaik untuk part number: ${product.part_number} (${product.name}). Mohon info stok & diskon quantity. Terima kasih!`;
   const waUrl = getWhatsAppUrl(adminWa, waMsg);
 
   return (

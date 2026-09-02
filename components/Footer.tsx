@@ -13,15 +13,15 @@ export function Footer() {
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500 text-slate-950 font-black">
                 <Wrench className="h-5 w-5 stroke-[2.5]" />
               </div>
-              <span className="font-black tracking-tight text-lg uppercase text-white">
-                EQUIP<span className="text-amber-500">PART</span>
+              <span className="font-black tracking-tight text-base sm:text-lg uppercase text-white">
+                ANDALAN <span className="text-amber-500">PART SERVICE</span>
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
               Distributor Utama Sparepart Alat Berat & Forklift Original & OEM High Quality. Solusi cepat penanganan unit breakdown lapangan.
             </p>
             <div className="pt-2 text-xs font-semibold text-slate-300">
-              © {new Date().getFullYear()} EquipPart Heavy Industries. All rights reserved.
+              © {new Date().getFullYear()} PT Andalan Part Service Indonesia. All rights reserved.
             </div>
           </div>
 
@@ -72,7 +72,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-amber-500" />
-                <span>sales@equippart-heavy.co.id</span>
+                <span>sales@andalanpartservice.co.id</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />

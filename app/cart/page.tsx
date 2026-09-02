@@ -20,7 +20,7 @@ export default function CartPage() {
 
   const customerDetail = customerName ? `\n👤 Pemesan/PT: ${customerName}${location ? `\n📍 Lokasi Site/KOTA: ${location}` : ''}\n` : '';
 
-  const waMsg = `Halo Admin EquipPart, saya ingin meminta penawaran resmi & ketersediaan stok untuk list sparepart berikut:${customerDetail}\n📋 DAFTAR ORDER:\n${itemLines}\n\nTotal Item: ${totalItems} Pcs\n\nMohon info total harga penawaran + estimasi kargo pengiriman. Terima kasih!`;
+  const waMsg = `Halo Admin Andalan Part Service, saya ingin meminta penawaran resmi & ketersediaan stok untuk list sparepart berikut:${customerDetail}\n📋 DAFTAR ORDER:\n${itemLines}\n\nTotal Item: ${totalItems} Pcs\n\nMohon info total harga penawaran + estimasi kargo pengiriman. Terima kasih!`;
   const waUrl = getWhatsAppUrl(adminWa, waMsg);
 
   return (

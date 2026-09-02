@@ -90,7 +90,7 @@ export function OrderManagementClient({ initialOrders }: OrderManagementClientPr
                 </tr>
               ) : (
                 filteredOrders.map((order) => {
-                  const waMsg = `Halo Kak ${order.customer_name}, kami dari Admin EquipPart mengenai pesanan ${order.order_code}.\n\nTotal: ${formatIDR(order.total_amount)}\nStatus: ${order.order_status}.`;
+                  const waMsg = `Halo Kak ${order.customer_name}, kami dari Admin Andalan Part Service mengenai pesanan ${order.order_code}.\n\nTotal: ${formatIDR(order.total_amount)}\nStatus: ${order.order_status}.`;
                   const waUrl = getWhatsAppUrl(order.customer_phone || adminWa, waMsg);
 
                   return (

@@ -65,8 +65,8 @@ export default function EmergencyPage() {
         {/* Top Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 mb-1">
-              <Siren className="h-4 w-4 animate-pulse" /> EQUIPPART EMERGENCY FINDER
+            <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-3.5 py-1 text-xs font-bold text-amber-400 mb-1">
+              <Siren className="h-4 w-4 animate-pulse" /> ANDALAN PART SERVICE EMERGENCY FINDER
             </div>
             <h1 className="text-2xl sm:text-3xl font-black uppercase text-slate-900 tracking-tight">
               Formulir Permintaan Part Darurat Lapangan
