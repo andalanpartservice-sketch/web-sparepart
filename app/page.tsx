@@ -27,56 +27,55 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <Navbar initialSearch={search} />
 
       {/* Hero Breakdown Emergency Banner */}
-      <section className="bg-slate-900 border-b border-slate-800 text-white relative overflow-hidden py-6 sm:py-14">
+      <section className="bg-slate-900 border-b border-slate-800 text-white relative overflow-hidden py-3 sm:py-5">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#eab308_1px,transparent_1px)] [background-size:16px_16px]" />
         <div className="relative mx-auto max-w-7xl px-3 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center">
             {/* Main Headline */}
-            <div className="lg:col-span-8 space-y-3 sm:space-y-4">
-              <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-[11px] sm:text-xs font-bold text-amber-400">
-                <Siren className="h-3.5 w-3.5 sm:h-4 sm:w-4 animate-pulse text-amber-500" />
+            <div className="lg:col-span-8 space-y-2 sm:space-y-2.5">
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold text-amber-400">
+                <Siren className="h-3 w-3 sm:h-3.5 sm:w-3.5 animate-pulse text-amber-500" />
                 Layanan Penanganan Unit Breakdown Lapangan 24 Jam
               </div>
 
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-tight">
-                Pencarian Kilat Sparepart <br className="hidden sm:inline" />
-                <span className="text-amber-500">Alat Berat & Forklift</span>
+              <h1 className="text-lg sm:text-xl lg:text-2xl font-black uppercase tracking-tight text-white leading-snug">
+                Pencarian Kilat Sparepart <span className="text-amber-500">Alat Berat & Forklift</span>
               </h1>
 
-              <p className="text-xs sm:text-base text-slate-300 max-w-2xl font-normal leading-relaxed">
-                Akses instan ribuan part number original & heavy-duty aftermarket untuk Caterpillar, Komatsu, Toyota, TCM, dan Mitsubishi dengan kepastian stok dan opsi bayar transfer/COD/CBD.
+              <p className="text-[11px] sm:text-xs text-slate-300 max-w-xl font-normal leading-normal">
+                Akses instan ribuan part number original & heavy-duty aftermarket Caterpillar, Komatsu, Toyota, TCM, Mitsubishi.
               </p>
 
-              <div className="pt-1 flex flex-wrap gap-3 items-center">
+              <div className="pt-0.5 flex flex-wrap gap-2.5 items-center">
                 <Link
                   href="/emergency"
-                  className="flex items-center gap-2 rounded-lg bg-amber-500 px-5 py-3 text-xs sm:text-sm font-black uppercase tracking-wider text-slate-950 shadow-lg hover:bg-amber-400 active:scale-95 transition"
+                  className="flex items-center gap-1.5 rounded-lg bg-amber-500 px-3.5 py-2 text-xs font-black uppercase tracking-wider text-slate-950 shadow-md hover:bg-amber-400 active:scale-95 transition"
                 >
-                  <Siren className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <Siren className="h-3.5 w-3.5" />
                   Kirim Request Darurat
                 </Link>
-                <div className="flex items-center gap-3 text-[11px] sm:text-xs font-semibold text-slate-400">
-                  <span className="flex items-center gap-1"><ShieldCheck className="h-3.5 w-3.5 text-amber-400" /> Garansi Presisi</span>
-                  <span className="flex items-center gap-1"><Zap className="h-3.5 w-3.5 text-amber-400" /> Fast Track</span>
+                <div className="flex items-center gap-2.5 text-[10px] sm:text-[11px] font-semibold text-slate-400">
+                  <span className="flex items-center gap-1"><ShieldCheck className="h-3 w-3 text-amber-400" /> Garansi Presisi</span>
+                  <span className="flex items-center gap-1"><Zap className="h-3 w-3 text-amber-400" /> Fast Track</span>
                 </div>
               </div>
             </div>
 
             {/* Quick Emergency Finder Card */}
-            <div className="lg:col-span-4 rounded-xl border border-amber-500/30 bg-slate-950 p-4 sm:p-6 shadow-2xl">
-              <div className="flex items-center gap-2 mb-2">
-                <Siren className="h-4 w-4 text-amber-500 animate-bounce" />
-                <h3 className="font-extrabold uppercase text-amber-400 text-xs sm:text-sm">Unit Mati Di Lapangan?</h3>
+            <div className="lg:col-span-4 rounded-xl border border-amber-500/30 bg-slate-950 p-3 sm:p-4 shadow-xl">
+              <div className="flex items-center gap-1.5 mb-1">
+                <Siren className="h-3.5 w-3.5 text-amber-500 animate-bounce" />
+                <h3 className="font-extrabold uppercase text-amber-400 text-xs">Unit Mati Di Lapangan?</h3>
               </div>
-              <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed mb-3">
-                Foto nameplate alat berat atau komponen rusak Anda. Tim teknis kami akan mendeteksi part number yang tepat dan mengirimkan penawaran dalam 15 menit.
+              <p className="text-[10px] sm:text-[11px] text-slate-400 leading-normal mb-2">
+                Foto nameplate / komponen rusak. Tim teknis kami merespon penawaran dalam 15 menit.
               </p>
               <Link
                 href="/emergency"
-                className="w-full flex items-center justify-center gap-2 rounded-lg border border-amber-500/50 bg-amber-500/10 py-2.5 text-xs font-extrabold uppercase text-amber-400 hover:bg-amber-500 hover:text-slate-950 transition"
+                className="w-full flex items-center justify-center gap-1.5 rounded-lg border border-amber-500/50 bg-amber-500/10 py-1.5 text-xs font-extrabold uppercase text-amber-400 hover:bg-amber-500 hover:text-slate-950 transition"
               >
                 Upload Foto Part Rusak
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>
