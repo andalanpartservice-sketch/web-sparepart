@@ -14,11 +14,11 @@ export function WhatsAppFloatingButton() {
       href={waUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-full bg-emerald-600 px-4 py-3 text-xs font-black uppercase text-white shadow-2xl hover:bg-emerald-500 hover:scale-105 active:scale-95 transition group"
+      className="fixed bottom-20 right-4 sm:bottom-5 sm:right-5 z-40 flex items-center gap-2.5 rounded-full bg-emerald-600 px-3.5 py-2.5 sm:px-4 sm:py-3 text-xs font-black uppercase text-white shadow-2xl hover:bg-emerald-500 hover:scale-105 active:scale-95 transition group"
       title="Hubungi Sales WhatsApp (Respon 5 Menit)"
     >
       <div className="relative">
-        <MessageSquare className="h-5 w-5 fill-white text-emerald-600" />
+        <MessageSquare className="h-4 w-4 sm:h-5 sm:w-5 fill-white text-emerald-600" />
         <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-400"></span>

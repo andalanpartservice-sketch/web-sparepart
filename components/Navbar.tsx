@@ -69,8 +69,8 @@ export function Navbar({ initialSearch = '' }: NavbarProps) {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Cari Part Number (mis: 1R-0716), Nama Part, atau Brand..."
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 py-2.5 pl-10 pr-24 text-sm text-slate-100 placeholder-slate-400 font-mono-part focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 transition shadow-inner"
+                placeholder="Cari Part Number, Nama Part, atau Brand..."
+                className="w-full rounded-lg border border-slate-700 bg-slate-950 py-2.5 pl-9 sm:pl-10 pr-20 sm:pr-24 text-base sm:text-sm text-slate-100 placeholder-slate-400 font-mono-part focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 transition shadow-inner"
               />
               <Search className="absolute left-3.5 top-3 h-4 w-4 text-slate-400" />
               <button

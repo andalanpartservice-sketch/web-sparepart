@@ -37,96 +37,97 @@ export function ProductCard({ product }: ProductCardProps) {
         />
 
         {/* Stock & Fast Moving Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-1 items-start">
+        <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex flex-col gap-1 items-start">
           {isReady ? (
-            <span className="inline-flex items-center gap-1 rounded-md bg-emerald-600 px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-xs">
-              <CheckCircle className="h-3 w-3" /> READY STOCK
+            <span className="inline-flex items-center gap-1 rounded-md bg-emerald-600 px-1.5 sm:px-2.5 py-0.5 sm:py-1 text-[9px] sm:text-[11px] font-extrabold uppercase tracking-wide text-white shadow-xs">
+              <CheckCircle className="h-2.5 w-2.5 sm:h-3 sm:w-3" /> READY
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 rounded-md bg-slate-700 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-slate-200 shadow-xs">
-              <Clock className="h-3 w-3 text-amber-400" /> INDENT 7 DAYS
+            <span className="inline-flex items-center gap-1 rounded-md bg-slate-800 px-1.5 sm:px-2.5 py-0.5 sm:py-1 text-[9px] sm:text-[11px] font-bold uppercase tracking-wide text-slate-200 shadow-xs">
+              <Clock className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-amber-400" /> INDENT
             </span>
           )}
 
           {product.is_fast_moving && (
-            <span className="inline-flex items-center gap-1 rounded-md bg-amber-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-slate-950 shadow-xs">
-              🔥 FAST MOVING
+            <span className="inline-flex items-center gap-0.5 rounded-md bg-amber-500 px-1.5 py-0.5 text-[8px] sm:text-[10px] font-black uppercase tracking-wider text-slate-950 shadow-xs">
+              🔥 FAST PART
             </span>
           )}
         </div>
 
         {/* Brand Tag */}
-        <div className="absolute bottom-3 right-3 rounded-md bg-slate-900/90 px-2.5 py-1 text-[11px] font-black uppercase text-amber-400 backdrop-blur-xs">
+        <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 rounded-md bg-slate-900/90 px-1.5 sm:px-2.5 py-0.5 sm:py-1 text-[9px] sm:text-[11px] font-black uppercase text-amber-400 backdrop-blur-xs">
           {product.brand}
         </div>
       </Link>
 
       {/* Details Container */}
-      <div className="flex flex-1 flex-col p-4">
+      <div className="flex flex-1 flex-col p-2.5 sm:p-4">
         {/* Category & Part Number */}
-        <div className="mb-1.5 flex items-center justify-between gap-2">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+        <div className="mb-1 flex items-center justify-between gap-1">
+          <span className="text-[9px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 truncate">
             {product.category}
           </span>
-          <span className="font-mono-part text-xs font-black tracking-tight text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+          <span className="font-mono-part text-[10px] sm:text-xs font-black tracking-tight text-slate-900 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 shrink-0">
             {product.part_number}
           </span>
         </div>
 
         {/* Product Title */}
         <Link href={`/product/${product.id}`} className="group-hover:text-amber-600 transition">
-          <h3 className="line-clamp-2 text-base font-bold text-slate-900 leading-snug">
+          <h3 className="line-clamp-2 text-xs sm:text-base font-bold text-slate-900 leading-snug">
             {product.name}
           </h3>
         </Link>
 
         {/* Compatibility Chips */}
-        <div className="mt-2.5 flex flex-wrap gap-1">
-          {product.compatible_models.slice(0, 3).map((model, idx) => (
+        <div className="mt-2 flex flex-wrap gap-1">
+          {product.compatible_models.slice(0, 2).map((model, idx) => (
             <span
               key={idx}
-              className="inline-block text-[10px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded"
+              className="inline-block text-[9px] sm:text-[10px] font-semibold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded truncate max-w-[110px]"
             >
               {model}
             </span>
           ))}
-          {product.compatible_models.length > 3 && (
-            <span className="text-[10px] font-medium text-slate-400 self-center">
-              +{product.compatible_models.length - 3} lagi
+          {product.compatible_models.length > 2 && (
+            <span className="text-[9px] font-medium text-slate-400 self-center">
+              +{product.compatible_models.length - 2}
             </span>
           )}
         </div>
 
         {/* Spacer */}
-        <div className="flex-1 min-h-3" />
+        <div className="flex-1 min-h-2" />
 
         {/* Price Box & Actions */}
-        <div className="mt-3 pt-3 border-t border-slate-100">
-          <div className="mb-3 flex items-center justify-between bg-amber-50 border border-amber-200/80 rounded-lg p-2.5">
-            <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-800">
-              Penawaran Harga
+        <div className="mt-2.5 pt-2 border-t border-slate-100">
+          <div className="mb-2 flex items-center justify-between bg-amber-50 border border-amber-200/80 rounded-lg p-1.5 sm:p-2.5">
+            <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-amber-800">
+              Harga
             </span>
-            <span className="text-xs font-black text-amber-900">
-              Tanya via WhatsApp
+            <span className="text-[10px] sm:text-xs font-black text-amber-900">
+              Tanya via WA
             </span>
           </div>
 
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-1.5">
             <button
               onClick={handleAddToCart}
-              className="flex items-center justify-center gap-1.5 rounded-lg border border-slate-300 bg-white py-2 px-2 text-xs font-bold text-slate-800 hover:border-slate-400 hover:bg-slate-50 transition"
+              className="flex items-center justify-center gap-1 rounded-lg border border-slate-300 bg-white py-1.5 sm:py-2 px-1 text-[10px] sm:text-xs font-bold text-slate-800 hover:border-slate-400 hover:bg-slate-50 transition"
             >
-              <ShoppingCart className="h-3.5 w-3.5 text-slate-600" />
-              + Keranjang
+              <ShoppingCart className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-slate-600" />
+              <span className="hidden xs:inline">+ List</span>
+              <span className="xs:hidden">+ List</span>
             </button>
             <a
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1 rounded-lg bg-emerald-600 py-2 px-2 text-xs font-extrabold uppercase text-white hover:bg-emerald-500 shadow-xs transition"
+              className="flex items-center justify-center gap-1 rounded-lg bg-emerald-600 py-1.5 sm:py-2 px-1 text-[10px] sm:text-xs font-extrabold uppercase text-white hover:bg-emerald-500 shadow-xs transition"
             >
-              <MessageSquare className="h-3.5 w-3.5" />
-              Chat WA
+              <MessageSquare className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+              <span>WA</span>
             </a>
           </div>
         </div>
