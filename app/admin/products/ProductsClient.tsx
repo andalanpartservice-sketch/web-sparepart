@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Product, StockStatus } from '@/lib/types';
 import { formatIDR } from '@/lib/utils';
 import { saveProduct, updateProduct } from '@/lib/data-service';
-import { Package, Plus, CheckCircle, Clock, Edit2, Search, X } from 'lucide-react';
+import { Package, Plus, CheckCircle, Clock, Edit2, Search, X, Upload, Trash2 } from 'lucide-react';
 
 interface ProductsClientProps {
   initialProducts: Product[];
@@ -129,6 +129,19 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
     setStockStatus('READY');
     setImageUrl('');
     setDescription('');
+  };
+
+  const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        if (reader.result) {
+          setImageUrl(reader.result as string);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const filteredProducts = products.filter(
@@ -377,14 +390,43 @@ export function ProductsClient({ initialProducts }: ProductsClientProps) {
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">URL Gambar Produk</label>
-                <input
-                  type="url"
-                  value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
-                  placeholder="https://..."
-                  className="w-full rounded-lg border border-slate-300 p-2 focus:border-amber-500 focus:outline-none"
-                />
+                <label className="block font-bold text-slate-700 mb-1">Foto Sparepart (Upload dari HP / Komputer)</label>
+                {imageUrl ? (
+                  <div className="relative rounded-xl border border-slate-200 bg-slate-50 p-3 flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3 overflow-hidden">
+                      {/* eslint-disable-next-html-element-suppression */}
+                      <img
+                        src={imageUrl}
+                        alt="Preview"
+                        className="h-14 w-14 rounded-lg object-cover border border-slate-300 shrink-0"
+                      />
+                      <div className="text-xs truncate">
+                        <span className="font-bold text-slate-800 block">Foto Berhasil Dipilih</span>
+                        <span className="text-[10px] text-slate-500">Siap disimpan ke katalog</span>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setImageUrl('')}
+                      className="flex items-center gap-1 rounded-lg bg-rose-50 px-2.5 py-1.5 text-[11px] font-bold text-rose-600 hover:bg-rose-100 transition shrink-0"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                      Ganti Foto
+                    </button>
+                  </div>
+                ) : (
+                  <label className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-4 hover:bg-amber-50/50 hover:border-amber-400 transition cursor-pointer group">
+                    <Upload className="h-6 w-6 text-slate-400 group-hover:text-amber-600 transition mb-1.5" />
+                    <span className="text-xs font-bold text-slate-700">Pilih Foto dari Galeri HP / Komputer</span>
+                    <span className="text-[10px] text-slate-400 mt-0.5">Format JPG, PNG, WEBP (Bisa langsung ambil dari Kamera HP)</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageFileChange}
+                      className="hidden"
+                    />
+                  </label>
+                )}
               </div>
 
               <div>
