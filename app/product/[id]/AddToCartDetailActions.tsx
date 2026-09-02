@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { ShoppingCart, MessageSquare, Plus, Minus } from 'lucide-react';
 import { Product } from '@/lib/types';
 import { useCart } from '@/context/CartContext';
@@ -12,7 +11,6 @@ interface AddToCartDetailActionsProps {
 }
 
 export function AddToCartDetailActions({ product, waUrl }: AddToCartDetailActionsProps) {
-  const router = useRouter();
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
 

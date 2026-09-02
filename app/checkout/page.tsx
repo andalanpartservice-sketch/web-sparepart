@@ -7,7 +7,7 @@ import { useCart } from '@/context/CartContext';
 import { formatIDR, generateOrderCode } from '@/lib/utils';
 import { PaymentMethod } from '@/lib/types';
 import { saveOrder } from '@/lib/data-service';
-import { CreditCard, Truck, Upload, AlertCircle, ArrowLeft, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { CreditCard, Truck, Upload, AlertCircle, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 export default function CheckoutPage() {
   const router = useRouter();

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Order, OrderStatus } from '@/lib/types';
 import { formatIDR, getWhatsAppUrl } from '@/lib/utils';
 import { updateOrderStatus } from '@/lib/data-service';
-import { ShoppingBag, Eye, Send, CheckCircle2, Clock, AlertTriangle, FileText, Search } from 'lucide-react';
+import { ShoppingBag, Eye, Send, Search } from 'lucide-react';
 
 interface OrderManagementClientProps {
   initialOrders: Order[];

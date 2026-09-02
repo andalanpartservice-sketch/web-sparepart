@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { Navbar } from '@/components/Navbar';
 import { getOrderByIdOrCode } from '@/lib/data-service';
 import { formatIDR, getWhatsAppUrl } from '@/lib/utils';
-import { CheckCircle2, Copy, Send, CreditCard, ArrowLeft, ShieldCheck, FileText, Upload } from 'lucide-react';
+import { CheckCircle2, Send, CreditCard, ArrowLeft } from 'lucide-react';
 
 interface OrderSuccessPageProps {
   params: Promise<{ id: string }>;

@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { getOrders, getEmergencyInquiries, getProducts } from '@/lib/data-service';
 import { formatIDR } from '@/lib/utils';
-import { ShoppingBag, Siren, Package, DollarSign, ArrowRight, CheckCircle2, Clock, Wrench } from 'lucide-react';
+import { ShoppingBag, Siren, Package, DollarSign, ArrowRight, Clock, Wrench } from 'lucide-react';
 
 export default async function AdminDashboardPage() {
   const orders = await getOrders();

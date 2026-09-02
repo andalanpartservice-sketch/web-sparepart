@@ -97,5 +97,29 @@ INSERT INTO public.products (part_number, name, brand, category, compatible_mode
 
 ('708-2L-00300', 'Hydraulic Cylinder Rod Packing Kit', 'Komatsu', 'Hydraulic', ARRAY['Komatsu PC130-7', 'Komatsu PC200-7', 'Komatsu PC200-8'], 1150000.00, 'READY', 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=800&auto=format&fit=crop&q=80', 'Packing rod silinder arm & boom ekskavator Komatsu PC200. Mencegah kebocoran oli hidrolik pada beban kerja ekstra berat.'),
 
-('1R-0749', 'Secondary Fuel Filter Spin-On', 'Caterpillar', 'Filter', ARRAY['CAT 320D', 'CAT 330D', 'CAT 773F'], 520000.00, 'READY', 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&auto=format&fit=crop&q=80', 'Filter solar sekunder model spin-on untuk perlindungan presisi injektor Common Rail Caterpillar.')
+('1R-0749', 'Secondary Fuel Filter Spin-On', 'Caterpillar', 'Filter', ARRAY['CAT 320D', 'CAT 330D', 'CAT 773F'], 520000.00, 'READY', 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&auto=format&fit=crop&q=80', 'Filter solar sekunder model spin-on untuk perlindungan presisi injektor Common Rail Caterpillar.'),
+
+('91A46-10100', 'Brake Master Cylinder Assembly', 'Caterpillar', 'Brake', ARRAY['CAT DP20', 'CAT DP25', 'CAT DP30', 'CAT GP25'], 1450000.00, 'READY', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80', 'Master rem utama presisi tinggi untuk unit forklift Caterpillar kapasitas 2.0 - 3.0 Ton. Memastikan tekanan fluida pengereman hidrolik stabil dan responsif.'),
+
+('91B46-10313', 'Brake Shoe Set Front Heavy Duty', 'Caterpillar', 'Brake', ARRAY['CAT DP20', 'CAT DP25', 'CAT DP30', 'CAT GP25'], 780000.00, 'READY', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80', 'Set kampas rem roda depan tahan gesekan dan panas tinggi, dirancang khusus untuk forklift Caterpillar tipe DP25 & DP30 pengoperasian beban berat.'),
+
+('91446-00900', 'Wheel Cylinder Assembly Left/Right', 'Caterpillar', 'Brake', ARRAY['CAT DP25', 'CAT DP30', 'CAT GP25', 'CAT GP30'], 450000.00, 'READY', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80', 'Silinder roda pengereman tromol depan forklift Caterpillar. Dilengkapi seal anti bocor tahan cairan rem DOT3/DOT4.'),
+
+('91366-04100', 'Hydraulic Return Oil Filter Element', 'Caterpillar', 'Hydraulic', ARRAY['CAT DP20', 'CAT DP25', 'CAT DP30', 'CAT DP35', 'CAT GP25'], 420000.00, 'READY', 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=800&auto=format&fit=crop&q=80', 'Elemen filter oli hidrolik saluran balik (return line) forklift Caterpillar. Menyaring kontaminan hingga 10 mikron untuk menjaga pompa dan katup hidrolik.'),
+
+('91E65-02100', 'Tilt Cylinder Seal Kit Heavy Duty', 'Caterpillar', 'Hydraulic', ARRAY['CAT DP25', 'CAT DP30', 'CAT DP35'], 680000.00, 'READY', 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=800&auto=format&fit=crop&q=80', 'Kit seal silinder tilt (kemiringan mast) forklift Caterpillar. Terdiri dari wiper seal, rod packing, dan O-ring tahan tekanan hidrolik tinggi.'),
+
+('91465-01500', 'Main Lift Cylinder Seal Repair Kit', 'Caterpillar', 'Hydraulic', ARRAY['CAT DP25', 'CAT DP30'], 850000.00, 'READY', 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=800&auto=format&fit=crop&q=80', 'Repair kit seal silinder angkat utama (main mast lift cylinder) forklift Caterpillar DP25/DP30. Mencegah penurunan garpu saat membawa beban berat.'),
+
+('91446-10010', 'Engine Water Pump Assembly Mitsubishi S4S', 'Caterpillar', 'Engine', ARRAY['CAT DP20', 'CAT DP25', 'CAT DP30', 'CAT DP35'], 1650000.00, 'READY', 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=800&auto=format&fit=crop&q=80', 'Pompa air pendingin (water pump) mesin diesel Mitsubishi S4S / S6S pada forklift Caterpillar DP25 dan DP30. Menjaga sirkulasi pendingin blok mesin.'),
+
+('32B45-10030', 'Engine Thermostat 76.5°C', 'Caterpillar', 'Engine', ARRAY['CAT DP20', 'CAT DP25', 'CAT DP30', 'CAT DP35', 'CAT DP50'], 290000.00, 'READY', 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=800&auto=format&fit=crop&q=80', 'Thermostat kontrol suhu air pendingin mesin forklift Caterpillar. Membuka presisi pada suhu 76.5°C untuk cegah mesin overheat.'),
+
+('32A68-00800', 'Alternator Assembly 12V 50A', 'Caterpillar', 'Electrical', ARRAY['CAT DP20', 'CAT DP25', 'CAT DP30', 'CAT GP25'], 2850000.00, 'READY', 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&auto=format&fit=crop&q=80', 'Alternator pengisian daya aki 12 Volt 50 Ampere heavy duty untuk forklift Caterpillar mesin S4S / K21.'),
+
+('32B66-00100', 'Starter Motor Assembly 12V 2.8kW', 'Caterpillar', 'Electrical', ARRAY['CAT DP25', 'CAT DP30', 'CAT DP35'], 3200000.00, 'READY', 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&auto=format&fit=crop&q=80', 'Motor starter 12 Volt 2.8kW torsi tinggi untuk menghidupkan mesin diesel forklift Caterpillar DP25-DP35 kondisi dingin maupun panas.'),
+
+('91361-00800', 'Air Filter Outer Element Heavy Duty', 'Caterpillar', 'Filter', ARRAY['CAT DP20', 'CAT DP25', 'CAT DP30', 'CAT GP20', 'CAT GP25'], 310000.00, 'READY', 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&auto=format&fit=crop&q=80', 'Filter udara luar pelindung mesin forklift Caterpillar dari debu dan partikel lapangan pabrik / gudang.'),
+
+('91366-01300', 'Torque Converter Transmission Oil Filter', 'Caterpillar', 'Filter', ARRAY['CAT DP25', 'CAT DP30', 'CAT DP35', 'CAT DP50'], 495000.00, 'READY', 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&auto=format&fit=crop&q=80', 'Filter oli transmisi otomatis (Powershift Torque Converter) forklift Caterpillar. Menyaring sisa gesekan plat kopling transmisi.')
 ON CONFLICT (part_number) DO NOTHING;

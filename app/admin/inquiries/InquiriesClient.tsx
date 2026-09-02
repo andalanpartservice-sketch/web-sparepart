@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { EmergencyInquiry, InquiryStatus } from '@/lib/types';
 import { getWhatsAppUrl } from '@/lib/utils';
 import { updateInquiryStatus } from '@/lib/data-service';
-import { Siren, Send, CheckCircle2, Clock, Image as ImageIcon, AlertTriangle } from 'lucide-react';
+import { Siren, Send, Image as ImageIcon } from 'lucide-react';
 
 interface InquiriesClientProps {
   initialInquiries: EmergencyInquiry[];

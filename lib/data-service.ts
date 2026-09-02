@@ -4,9 +4,9 @@ import { createClient as createBrowserClient } from './supabase/client';
 import { createClient as createServerClient } from './supabase/server';
 
 // Global in-memory storage for mock fallback mode during runtime
-let mockProductsStore: Product[] = [...INITIAL_PRODUCTS];
-let mockOrdersStore: Order[] = [...INITIAL_ORDERS];
-let mockInquiriesStore: EmergencyInquiry[] = [...INITIAL_INQUIRIES];
+const mockProductsStore: Product[] = [...INITIAL_PRODUCTS];
+const mockOrdersStore: Order[] = [...INITIAL_ORDERS];
+const mockInquiriesStore: EmergencyInquiry[] = [...INITIAL_INQUIRIES];
 
 async function getSupabaseInstance() {
   if (typeof window !== 'undefined') {
